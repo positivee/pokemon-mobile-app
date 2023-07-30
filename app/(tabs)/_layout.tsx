@@ -1,53 +1,45 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
-
-import Colors from '@/constants/Colors';
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Link, Tabs } from "expo-router";
+import { Pressable, useColorScheme } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
+        headerTitleAlign: "center",
+
+        headerRight: () => (
+          <Link href="/copyright" asChild>
+            <Pressable>
+              {({ pressed }) => (
+                <Ionicons
+                  name="information-circle-outline"
+                  size={25}
+                  style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                ></Ionicons>
+              )}
+            </Pressable>
+          </Link>
+        ),
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          title: "Pokemon App",
+          tabBarLabel: "All pokemons",
+          tabBarIcon: () => <Ionicons name="home-outline" size={20} />,
+          tabBarInactiveTintColor: "#222222",
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="favList"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerTitle: "Your liked pokemons",
+          tabBarLabel: "Liked Pokemons",
+          tabBarIcon: () => <Ionicons name="bookmark-outline" size={20} />,
+          tabBarInactiveTintColor: "#222222",
         }}
       />
     </Tabs>
