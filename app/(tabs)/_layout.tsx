@@ -8,7 +8,6 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerTitleAlign: "center",
-
         headerRight: () => (
           <Link href="/copyright" asChild>
             <Pressable>

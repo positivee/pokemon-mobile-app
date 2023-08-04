@@ -41,6 +41,7 @@ const favList = () => {
               </View>
             }
             data={liked}
+            keyExtractor={(item) => item}
             renderItem={({ item }) => (
               <View style={styles.pokemonCard}>
                 <Text style={styles.name}>{item}</Text>

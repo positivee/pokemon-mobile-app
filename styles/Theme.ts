@@ -7,7 +7,7 @@ export const PokemonAppTheme: Theme = {
     background: '#5CB9FF',
     card: '#FAF9F5',
     text: '#222222',
-    border: '#FAF9F5',
+    border: '#222222',
     notification: '#828282',
   },
 };

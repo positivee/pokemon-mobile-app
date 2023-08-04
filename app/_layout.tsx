@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import { persistor } from "@/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { store } from "@/store";
+import { StatusBar } from "expo-status-bar";
+import { COLORS } from "@/styles/globalStyles";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -19,6 +21,7 @@ export default function RootLayoutNav() {
     <ThemeProvider value={PokemonAppTheme}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
+          <StatusBar backgroundColor={COLORS.primary} style="light" />
           <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           </Stack>

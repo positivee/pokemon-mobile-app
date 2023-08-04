@@ -25,8 +25,10 @@ const Pokemon = ({ name }: { name: string }) => {
 
         <Text style={styles.name}>{name}</Text>
         <View style={styles.typesContainer}>
-          {pokemon?.types.map((item) => (
-            <Text style={styles.types}>{item?.type?.name + " "}</Text>
+          {pokemon?.types.map((item, index) => (
+            <Text key={index} style={styles.types}>
+              {item?.type?.name + " "}
+            </Text>
           ))}
         </View>
         <View style={styles.icons}>
